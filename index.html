@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Thistle Moon • Social Constellation Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0b132b;
+            --nebula: #1c2541;
+            --violet: #5bc0be;
+            --lilac: #9c6dfd;
+            --sand: #f4efe9;
+            --muted: rgba(244, 239, 233, 0.72);
+            --card: rgba(16, 22, 49, 0.82);
+            --border: rgba(151, 177, 255, 0.3);
+            --shadow: 0 28px 60px rgba(9, 12, 28, 0.5);
+            --radius-lg: 28px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top right, rgba(92, 192, 190, 0.12) 0%, transparent 45%),
+                        radial-gradient(circle at bottom left, rgba(156, 109, 253, 0.18) 0%, transparent 50%),
+                        var(--ink);
+            color: var(--sand);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 4rem 7vw 1rem;
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(92, 192, 190, 0.12) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            letter-spacing: 0.12em;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(244, 239, 233, 0.2);
+            background: rgba(244, 239, 233, 0.08);
+        }
+
+        .cta {
+            background: linear-gradient(120deg, rgba(92, 192, 190, 0.9), rgba(156, 109, 253, 0.9));
+            color: var(--ink);
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding: 1rem 7vw 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            margin-top: 3rem;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(13, 19, 46, 0.95), rgba(28, 37, 65, 0.92));
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(156, 109, 253, 0.18) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.6rem);
+            margin-bottom: 1rem;
+            line-height: 1.05;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .metric-card {
+            padding: 1.4rem;
+            border-radius: 24px;
+            background: rgba(10, 16, 42, 0.92);
+            border: 1px solid var(--border);
+        }
+
+        .metric-card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.1rem;
+            color: rgba(244, 239, 233, 0.9);
+        }
+
+        .metric-card strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        section {
+            margin-top: 4.5rem;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 0;
+        }
+
+        .section-heading p {
+            max-width: 560px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .planner {
+            background: linear-gradient(140deg, rgba(18, 24, 54, 0.95), rgba(12, 18, 42, 0.92));
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: minmax(260px, 380px) 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .planner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.95rem;
+            gap: 0.6rem;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            padding: 0.85rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(244, 239, 233, 0.1);
+            background: rgba(7, 10, 28, 0.6);
+            color: var(--sand);
+            font: inherit;
+            resize: vertical;
+        }
+
+        textarea {
+            min-height: 120px;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .platform-option {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 0.9rem;
+            border-radius: 14px;
+            border: 1px solid rgba(244, 239, 233, 0.12);
+            background: rgba(7, 10, 28, 0.55);
+            cursor: pointer;
+        }
+
+        .platform-option input {
+            accent-color: var(--violet);
+        }
+
+        button[type="submit"] {
+            padding: 0.95rem 1.5rem;
+            border-radius: 16px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            background: linear-gradient(120deg, rgba(92, 192, 190, 0.9), rgba(156, 109, 253, 0.9));
+            color: var(--ink);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+        }
+
+        .platform-output {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .platform-card {
+            background: rgba(10, 16, 42, 0.92);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .platform-card h3 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .chip {
+            padding: 0.45rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            background: rgba(156, 109, 253, 0.18);
+            border: 1px solid rgba(156, 109, 253, 0.35);
+        }
+
+        .copy-block {
+            background: rgba(6, 8, 24, 0.65);
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid rgba(244, 239, 233, 0.08);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(244, 239, 233, 0.92);
+        }
+
+        .subheading {
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(244, 239, 233, 0.6);
+        }
+
+        .schedule-board {
+            margin-top: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            background: rgba(10, 14, 36, 0.92);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .schedule-day {
+            background: rgba(6, 8, 24, 0.65);
+            border-radius: 18px;
+            border: 1px solid rgba(244, 239, 233, 0.08);
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .schedule-day h4 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .schedule-item {
+            padding: 0.85rem;
+            border-radius: 14px;
+            background: rgba(156, 109, 253, 0.12);
+            border: 1px solid rgba(156, 109, 253, 0.25);
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .automation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .automation-card {
+            background: rgba(10, 16, 42, 0.92);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .automation-card ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            display: grid;
+            gap: 0.6rem;
+            color: rgba(244, 239, 233, 0.85);
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding: 3rem 7vw 4rem;
+            background: rgba(7, 9, 28, 0.9);
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            margin: 0;
+            color: rgba(244, 239, 233, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .empty-state {
+            padding: 2.4rem;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            border: 1px dashed rgba(244, 239, 233, 0.2);
+            background: rgba(7, 10, 28, 0.4);
+            color: var(--muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="brand">Wild Thistle Moon</div>
+            <div class="nav-actions">
+                <span class="badge">AEO • SEO • GEO • LLM Optimized</span>
+                <a class="cta" href="#strategy">Launch Planner</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 id="hero-title">Social Constellation Studio for Visionary Creators</h1>
+                    <p>Orchestrate on-brand stories across Facebook, Instagram, LinkedIn, X, Pinterest, and YouTube in minutes. Wild Thistle Moon aligns voice, visuals, scheduling, and platform-specific intelligence into a single micro SaaS workspace built for AI-assisted creators.</p>
+                    <div class="chip-row">
+                        <span class="chip">Auto Persona Insights</span>
+                        <span class="chip">Omnichannel Content Architect</span>
+                        <span class="chip">Dynamic Asset Prompts</span>
+                        <span class="chip">Geo-Localized SEO Schema</span>
+                    </div>
+                </div>
+                <div class="hero-grid" role="presentation">
+                    <div class="metric-card">
+                        <h3>Creator Throughput</h3>
+                        <strong>6x faster</strong>
+                        <span>Generate multi-platform campaigns, assets, and cadence in one guided flow.</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Platform Fit</h3>
+                        <strong>100%</strong>
+                        <span>Optimized copy lengths, media ratios, and best-post times per channel.</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Conversion Lift</h3>
+                        <strong>+38%</strong>
+                        <span>AEO + SEO + GEO frameworks ensure intention-rich messaging that ranks and converts.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy">
+            <div class="section-heading">
+                <div>
+                    <h2>Build a Multi-Platform Launch Plan</h2>
+                    <p>Feed the constellation with your campaign details and let the studio translate them into platform-native copy, SEO-intent keywords, scheduling guidance, and AI-ready visual prompts.</p>
+                </div>
+                <div class="badge">LLM-orchestrated intelligence, no prompt wrangling required.</div>
+            </div>
+
+            <div class="planner">
+                <form id="strategy-form" aria-label="Campaign strategy form">
+                    <label>
+                        Campaign spotlight
+                        <input type="text" name="topic" placeholder="e.g., Lunar-inspired wellness retreat" required>
+                    </label>
+                    <label>
+                        Audience persona
+                        <textarea name="persona" placeholder="Who are you speaking to? Include pain points, motivations, and lifestyle cues." required></textarea>
+                    </label>
+                    <label>
+                        Primary objective
+                        <select name="goal" required>
+                            <option value="drive sign-ups">Drive sign-ups</option>
+                            <option value="increase brand awareness">Increase brand awareness</option>
+                            <option value="promote a launch">Promote a launch</option>
+                            <option value="boost community engagement">Boost community engagement</option>
+                            <option value="sell products">Sell products</option>
+                        </select>
+                    </label>
+                    <label>
+                        Voice &amp; tone signature
+                        <select name="tone" required>
+                            <option value="expansive and poetic">Expansive &amp; poetic</option>
+                            <option value="confident and expert">Confident &amp; expert</option>
+                            <option value="playful and upbeat">Playful &amp; upbeat</option>
+                            <option value="minimal and modern">Minimal &amp; modern</option>
+                            <option value="grounded and nurturing">Grounded &amp; nurturing</option>
+                        </select>
+                    </label>
+                    <label>
+                        Call-to-action focus
+                        <input type="text" name="cta" placeholder="e.g., Reserve your ritual space" required>
+                    </label>
+                    <label>
+                        SEO &amp; keyword anchors
+                        <input type="text" name="keywords" placeholder="Comma-separated keywords, hashtags, geo markers" required>
+                    </label>
+                    <label>
+                        Geo emphasis (optional)
+                        <input type="text" name="geo" placeholder="e.g., Sedona, AZ or Global remote">
+                    </label>
+                    <label>
+                        Launch date
+                        <input type="date" name="start" required>
+                    </label>
+                    <label>
+                        Content cadence
+                        <select name="cadence" required>
+                            <option value="daily">Daily bursts</option>
+                            <option value="three">3x per week</option>
+                            <option value="two">2x per week</option>
+                        </select>
+                    </label>
+                    <fieldset>
+                        <legend class="subheading">Select platforms</legend>
+                        <div class="platform-grid">
+                            <label class="platform-option"><input type="checkbox" name="platform" value="facebook" checked> Facebook</label>
+                            <label class="platform-option"><input type="checkbox" name="platform" value="instagram" checked> Instagram</label>
+                            <label class="platform-option"><input type="checkbox" name="platform" value="linkedin" checked> LinkedIn</label>
+                            <label class="platform-option"><input type="checkbox" name="platform" value="x" checked> X (Twitter)</label>
+                            <label class="platform-option"><input type="checkbox" name="platform" value="pinterest" checked> Pinterest</label>
+                            <label class="platform-option"><input type="checkbox" name="platform" value="youtube" checked> YouTube</label>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Generate omnichannel plan</button>
+                </form>
+
+                <div id="planner-output">
+                    <div class="empty-state" role="status">Input your campaign details to receive platform-perfect copy, AI image &amp; video prompts, hashtag strategy, and an adaptive publishing calendar.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="hidden">
+            <div class="section-heading">
+                <div>
+                    <h2>Automated Cadence &amp; Publishing Orbit</h2>
+                    <p>Each time block is tuned to the native engagement window per network, balancing discovery, SEO intent, and LLM-friendly context for ongoing optimization.</p>
+                </div>
+                <div class="badge">Exports cleanly to Notion, Airtable, or .ics</div>
+            </div>
+            <div class="schedule-board">
+                <div id="schedule-grid" class="schedule-grid"></div>
+            </div>
+        </section>
+
+        <section id="automation" class="hidden">
+            <div class="section-heading">
+                <div>
+                    <h2>AI Production Blueprint</h2>
+                    <p>Feed these prompts into your favorite LLM, image, or video model to auto-produce assets aligned with your messaging. Each stream is tuned for the selected platforms.</p>
+                </div>
+                <div class="badge">Use with Midjourney, SDXL, Runway, Sora, or in-house models</div>
+            </div>
+            <div id="automation-grid" class="automation-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Wild Thistle Moon is a micro SaaS studio crafted for multi-platform creators. Plug in your insight stack, connect your schedulers, and let the constellation run.</p>
+    </footer>
+
+    <script>
+        const platformGuidance = {
+            facebook: {
+                label: 'Facebook',
+                copyLimit: '125 characters primary text before truncation',
+                bestTimes: ['Tuesday 11:00', 'Thursday 13:00', 'Friday 15:00'],
+                defaultHashtags: ['#community', '#explore'],
+                videoLength: 'Reels & Live clips 30-60s',
+                aspectRatios: '1:1 or 4:5',
+                toneNotes: 'Lead with a narrative hook, add social proof and community invitation.',
+                imageStyle: 'warm cinematic lifestyle photography with subtle lens flare and lunar motifs',
+                imageFormat: '1080x1080 JPG, 150 DPI',
+                videoFormat: '1080x1350 MP4, captions burned-in',
+                altTemplate: 'Visually describe the focal subject, setting, and mood in a single accessible sentence.',
+                seoBoosters: ['link in caption', 'community groups', 'event RSVPs']
+            },
+            instagram: {
+                label: 'Instagram',
+                copyLimit: '138-150 characters for hook, 30 hashtags',
+                bestTimes: ['Wednesday 11:00', 'Friday 09:00', 'Sunday 18:00'],
+                defaultHashtags: ['#ritual', '#moonmagic'],
+                videoLength: 'Reels 9-30s',
+                aspectRatios: '4:5 feed, 9:16 story/reel',
+                toneNotes: 'Craft visual storytelling with sensory language and emoji pacing.',
+                imageStyle: 'ethereal editorial photography with grain and lunar gradients',
+                imageFormat: '1350x1080 JPG, 150 DPI',
+                videoFormat: '1080x1920 MP4, 30fps, -14 LUFS audio',
+                altTemplate: 'Summarize composition, colors, and actions for screen readers.',
+                seoBoosters: ['pin to profile', 'story highlights', 'geo-tagging']
+            },
+            linkedin: {
+                label: 'LinkedIn',
+                copyLimit: '3000 characters, bold opening, use white space',
+                bestTimes: ['Tuesday 09:00', 'Wednesday 10:00', 'Thursday 11:00'],
+                defaultHashtags: ['#leadership', '#futureofwork'],
+                videoLength: 'Native thought leadership 45-90s',
+                aspectRatios: '1.91:1 or 1:1',
+                toneNotes: 'Tie insights to business outcomes, data, and professional credibility.',
+                imageStyle: 'clean documentary photography with infographic overlays',
+                imageFormat: '1200x627 PNG, branded corners',
+                videoFormat: '1920x1080 MP4, captions + key takeaways overlays',
+                altTemplate: 'State the key professional insight the visual reinforces.',
+                seoBoosters: ['newsletter mentions', 'employee amplification', 'thought leadership tags']
+            },
+            x: {
+                label: 'X (Twitter)',
+                copyLimit: '280 characters, threadable',
+                bestTimes: ['Monday 09:00', 'Wednesday 12:00', 'Friday 14:00'],
+                defaultHashtags: ['#buildinpublic', '#creatoreconomy'],
+                videoLength: 'Clips under 60s',
+                aspectRatios: '16:9 or 1:1',
+                toneNotes: 'Use punchy leads, data points, and cliffhangers for threads.',
+                imageStyle: 'high-contrast graphic cards with bold typography',
+                imageFormat: '1200x675 PNG, 2MB max',
+                videoFormat: '1280x720 MP4, 60fps supported',
+                altTemplate: 'Describe text and chart elements for accessibility.',
+                seoBoosters: ['thread replies', 'quote tweet partners', 'pinned tweets']
+            },
+            pinterest: {
+                label: 'Pinterest',
+                copyLimit: '500 character descriptions',
+                bestTimes: ['Saturday 11:00', 'Sunday 20:00', 'Tuesday 15:00'],
+                defaultHashtags: ['#inspiration', '#moodboard'],
+                videoLength: 'Idea pins 45s max per page',
+                aspectRatios: '2:3 standard, 1000x1500',
+                toneNotes: 'Lead with aspirational phrasing and keyword-rich descriptions.',
+                imageStyle: 'stylized flat-lay with lunar props and gradient overlays',
+                imageFormat: '1000x1500 PNG, 72 DPI',
+                videoFormat: '1080x1920 MP4, cover frame with headline',
+                altTemplate: 'Describe the aesthetic, color palette, and featured items.',
+                seoBoosters: ['board keywords', 'idea pin chapters', 'link to gated resource']
+            },
+            youtube: {
+                label: 'YouTube',
+                copyLimit: '5000 character descriptions, strong first 120 characters',
+                bestTimes: ['Thursday 16:00', 'Friday 12:00', 'Saturday 09:00'],
+                defaultHashtags: ['#wellness', '#rituals'],
+                videoLength: 'Long-form 4-8 minutes, Shorts 30-45s',
+                aspectRatios: '16:9 long-form, 9:16 Shorts',
+                toneNotes: 'Deliver structured story arcs with clear chaptering and CTAs.',
+                imageStyle: 'cinematic thumbnails with subject close-up and bold title strip',
+                imageFormat: '1280x720 JPG, <2MB, high contrast text',
+                videoFormat: '3840x2160 MP4, 24fps cinematic, or 1080x1920 Shorts',
+                altTemplate: 'Explain thumbnail subject, expression, and headline context.',
+                seoBoosters: ['chapters + keywords', 'pinned comment CTA', 'community tab follow-up']
+            }
+        };
+
+        const cadenceMapping = {
+            daily: 7,
+            three: 3,
+            two: 2
+        };
+
+        const toneInflections = {
+            'expansive and poetic': ['celestial', 'lush metaphors', 'breath-like cadence'],
+            'confident and expert': ['data-backed', 'authoritative', 'benchmark references'],
+            'playful and upbeat': ['spark emojis', 'quick pacing', 'surprising hooks'],
+            'minimal and modern': ['crisp syntax', 'design-forward', 'concise imperatives'],
+            'grounded and nurturing': ['soothing', 'empathetic', 'ritualistic imagery']
+        };
+
+        const form = document.getElementById('strategy-form');
+        const plannerOutput = document.getElementById('planner-output');
+        const scheduleSection = document.getElementById('schedule');
+        const scheduleGrid = document.getElementById('schedule-grid');
+        const automationSection = document.getElementById('automation');
+        const automationGrid = document.getElementById('automation-grid');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const topic = formData.get('topic').trim();
+            const persona = formData.get('persona').trim();
+            const goal = formData.get('goal');
+            const tone = formData.get('tone');
+            const cta = formData.get('cta').trim();
+            const keywordsRaw = formData.get('keywords').trim();
+            const geo = formData.get('geo').trim();
+            const start = formData.get('start');
+            const cadence = formData.get('cadence');
+            const selectedPlatforms = formData.getAll('platform');
+
+            if (!selectedPlatforms.length) {
+                plannerOutput.innerHTML = '<div class="empty-state">Select at least one platform to generate your campaign intelligence.</div>';
+                scheduleSection.classList.add('hidden');
+                automationSection.classList.add('hidden');
+                return;
+            }
+
+            const keywords = keywordsRaw.split(',').map(k => k.trim()).filter(Boolean);
+            const insights = buildPlatformPlans({ topic, persona, goal, tone, cta, keywords, geo, start, cadence, selectedPlatforms });
+            const schedule = buildSchedule({ start, cadence, selectedPlatforms, bestTimes: insights.bestTimes });
+            const automation = buildAutomationStreams({ topic, goal, tone, keywords, persona, cta, geo, selectedPlatforms });
+
+            plannerOutput.innerHTML = '';
+            plannerOutput.appendChild(renderPlatformCards(insights.platforms));
+
+            if (schedule.length) {
+                scheduleSection.classList.remove('hidden');
+                renderSchedule(schedule);
+            } else {
+                scheduleSection.classList.add('hidden');
+            }
+
+            if (automation.length) {
+                automationSection.classList.remove('hidden');
+                renderAutomation(automation);
+            } else {
+                automationSection.classList.add('hidden');
+            }
+        });
+
+        function buildPlatformPlans({ topic, persona, goal, tone, cta, keywords, geo, start, cadence, selectedPlatforms }) {
+            const toneHints = toneInflections[tone] || [];
+            const platforms = selectedPlatforms.map(key => {
+                const config = platformGuidance[key];
+                const geoLine = geo ? ` Focus on ${geo} locale cues.` : '';
+                const keywordLine = keywords.length ? ` Keywords: ${keywords.join(', ')}.` : '';
+                const personaHook = persona.split(/[.!?]/)[0] || persona;
+                const hook = generateHook(tone, topic, personaHook, goal);
+                const body = generateBody(tone, topic, persona, goal, cta, config);
+                const hashtags = buildHashtags(keywords, config.defaultHashtags, geo);
+                const altText = buildAltText(config.altTemplate, topic, persona, tone);
+                const bestTime = config.bestTimes[0];
+                const seoFocus = config.seoBoosters.slice(0, 2).join(' · ');
+                const summary = `${hook} ${body} ${keywordLine}${geoLine} CTA: ${cta}.`;
+                const imagePrompt = `Create ${config.imageStyle} illustrating "${topic}" for ${personaHook.toLowerCase()}. Emphasize ${goal} and embed subtle ${toneHints[0] || 'atmospheric'} cues. Format ${config.imageFormat}.`;
+                const videoPrompt = `Produce a ${config.videoLength.toLowerCase()} ${config.videoFormat.toLowerCase()} narrative highlighting ${topic}. Structure intro-hook-proof-cta. ${toneHints.length ? `Mood: ${toneHints.join(', ')}.` : ''} Include on-screen CTA: "${cta}".`;
+                return {
+                    key,
+                    label: config.label,
+                    hook,
+                    summary,
+                    hashtags,
+                    bestTime,
+                    imagePrompt,
+                    videoPrompt,
+                    altText,
+                    seoFocus,
+                    copyLimit: config.copyLimit,
+                    aspectRatios: config.aspectRatios,
+                    toneNotes: config.toneNotes
+                };
+            });
+
+            const bestTimes = platforms.map(p => ({ platform: p.label, slots: platformGuidance[p.key].bestTimes }));
+            return { platforms, bestTimes };
+        }
+
+        function generateHook(tone, topic, personaHook, goal) {
+            const templates = {
+                'expansive and poetic': `✨ ${capitalize(topic)} becomes a portal for ${personaHook.toLowerCase()} ready to ${goal}.`,
+                'confident and expert': `Data-backed insight: ${capitalize(topic)} is the lever ${personaHook.toLowerCase()} need to ${goal}.`,
+                'playful and upbeat': `Guess what? ${capitalize(topic)} is about to make ${personaHook.toLowerCase()} ${goal}.`,
+                'minimal and modern': `${capitalize(topic)} → the sharpest path for ${personaHook.toLowerCase()} to ${goal}.`,
+                'grounded and nurturing': `Take a calming breath—${capitalize(topic)} is here to help ${personaHook.toLowerCase()} ${goal}.`
+            };
+            return templates[tone] || `${capitalize(topic)} helps ${personaHook.toLowerCase()} ${goal}.`;
+        }
+
+        function generateBody(tone, topic, persona, goal, cta, config) {
+            const personaSignals = persona.length > 160 ? persona.slice(0, 160) + '…' : persona;
+            switch (tone) {
+                case 'expansive and poetic':
+                    return `Invite them into lunar-lit moments that honor their rhythms: ${personaSignals}. ${config.toneNotes}`;
+                case 'confident and expert':
+                    return `Share proof points, metrics, and a tactical takeaway tailored to ${personaSignals}. ${config.toneNotes}`;
+                case 'playful and upbeat':
+                    return `Use emoji cadence and conversational asides that resonate with ${personaSignals}. ${config.toneNotes}`;
+                case 'minimal and modern':
+                    return `Deliver clean, skimmable lines with high-contrast visuals designed for ${personaSignals}. ${config.toneNotes}`;
+                case 'grounded and nurturing':
+                    return `Offer grounded reassurance with sensory cues and micro-rituals supporting ${personaSignals}. ${config.toneNotes}`;
+                default:
+                    return `${config.toneNotes}`;
+            }
+        }
+
+        function buildHashtags(keywords, defaults, geo) {
+            const cleaned = keywords.map(k => k.replace(/[^a-zA-Z0-9]+/g, '')).filter(Boolean);
+            const keywordTags = cleaned.slice(0, 6).map(k => `#${k.toLowerCase()}`);
+            const geoTag = geo ? `#${geo.toLowerCase().replace(/\s+/g, '')}` : null;
+            const combined = [...new Set([...keywordTags, ...defaults])];
+            if (geoTag) combined.push(geoTag);
+            return combined.slice(0, 10);
+        }
+
+        function buildAltText(template, topic, persona, tone) {
+            const personaDetail = persona.split(/[.!?]/)[0] || persona;
+            return `${capitalize(topic)} crafted for ${personaDetail.toLowerCase()} in a ${tone} mood. ${template}`;
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function renderPlatformCards(platforms) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'platform-output';
+            platforms.forEach(platform => {
+                const card = document.createElement('article');
+                card.className = 'platform-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="subheading">${platform.copyLimit} · ${platform.aspectRatios}</div>
+                        <h3>${platform.label}</h3>
+                        <div class="chip-row">
+                            <span class="chip">Prime time ${platform.bestTime}</span>
+                            <span class="chip">SEO: ${platform.seoFocus}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="subheading">Copy Blueprint</div>
+                        <div class="copy-block">${platform.summary}</div>
+                    </div>
+                    <div>
+                        <div class="subheading">Hashtags &amp; Keywords</div>
+                        <div class="chip-row">${platform.hashtags.map(tag => `<span class="chip">${tag}</span>`).join('')}</div>
+                    </div>
+                    <div>
+                        <div class="subheading">AI Image Prompt</div>
+                        <div class="copy-block">${platform.imagePrompt}</div>
+                    </div>
+                    <div>
+                        <div class="subheading">AI Video Prompt</div>
+                        <div class="copy-block">${platform.videoPrompt}</div>
+                    </div>
+                    <div>
+                        <div class="subheading">Alt Text Seed</div>
+                        <div class="copy-block">${platform.altText}</div>
+                    </div>
+                `;
+                wrapper.appendChild(card);
+            });
+            return wrapper;
+        }
+
+        function buildSchedule({ start, cadence, selectedPlatforms, bestTimes }) {
+            if (!start) return [];
+            const cadenceCount = cadenceMapping[cadence] || 3;
+            const startDate = new Date(start);
+            const days = 7;
+            const schedule = [];
+            for (let day = 0; day < days; day++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + day);
+                const isoDate = date.toISOString().split('T')[0];
+                const daySlots = [];
+                const dayName = date.toLocaleDateString(undefined, { weekday: 'long' });
+                selectedPlatforms.forEach((platformKey, idx) => {
+                    const config = platformGuidance[platformKey];
+                    const times = config.bestTimes;
+                    const slotIndex = (day + idx) % times.length;
+                    if (shouldSchedule(day, cadenceCount)) {
+                        daySlots.push({
+                            platform: config.label,
+                            time: times[slotIndex],
+                            highlight: bestTimes.find(b => b.platform === config.label)
+                        });
+                    }
+                });
+                schedule.push({ date: isoDate, dayName, slots: daySlots });
+            }
+            return schedule;
+        }
+
+        function shouldSchedule(dayIndex, cadenceCount) {
+            if (cadenceCount === 7) return true;
+            if (cadenceCount === 3) {
+                return [0, 2, 4].includes(dayIndex); // Mon, Wed, Fri cadence
+            }
+            if (cadenceCount === 2) {
+                return [1, 4].includes(dayIndex); // Tue & Fri cadence
+            }
+            return false;
+        }
+
+        function renderSchedule(schedule) {
+            scheduleGrid.innerHTML = '';
+            schedule.forEach(day => {
+                const dayCard = document.createElement('article');
+                dayCard.className = 'schedule-day';
+                dayCard.innerHTML = `<h4>${day.dayName} · ${formatDate(day.date)}</h4>`;
+                if (!day.slots.length) {
+                    const rest = document.createElement('div');
+                    rest.className = 'copy-block';
+                    rest.textContent = 'Recovery window — repurpose, engage, and collect signals.';
+                    dayCard.appendChild(rest);
+                } else {
+                    day.slots.forEach(slot => {
+                        const item = document.createElement('div');
+                        item.className = 'schedule-item';
+                        item.innerHTML = `
+                            <strong>${slot.time}</strong>
+                            <span>${slot.platform}</span>
+                            <span class="subheading">Queue &amp; auto-caption via LLM agent</span>
+                        `;
+                        dayCard.appendChild(item);
+                    });
+                }
+                scheduleGrid.appendChild(dayCard);
+            });
+        }
+
+        function formatDate(iso) {
+            const date = new Date(iso);
+            return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        }
+
+        function buildAutomationStreams({ topic, goal, tone, keywords, persona, cta, geo, selectedPlatforms }) {
+            const personaHook = persona.split(/[.!?]/)[0] || persona;
+            const keywordLine = keywords.length ? keywords.join(', ') : 'primary keywords pending';
+            return [
+                {
+                    title: 'LLM Content Orchestrator',
+                    description: 'Deploy this structured system prompt to generate iterative copy, carousels, and scripts per platform.',
+                    steps: [
+                        `Role: Senior omnichannel strategist crafting content for ${personaHook.toLowerCase()}.`,
+                        `Tone guidance: ${tone}. Optimize for ${goal}.`,
+                        `Platforms: ${selectedPlatforms.map(p => platformGuidance[p].label).join(', ')} with respective copy and format limits.`,
+                        `SEO & GEO anchors: ${keywordLine}${geo ? `, region focus ${geo}` : ''}.`,
+                        `Deliver JSON with hook, body, CTA "${cta}", repurposing ideas, and auto-translated alt text.`
+                    ]
+                },
+                {
+                    title: 'Image Generation Workflow',
+                    description: 'Streamline asset creation across Midjourney, SDXL, or Adobe Firefly with platform-aware prompts.',
+                    steps: [
+                        `Base prompt: "${topic}" translated into ${tone} visual language for ${personaHook.toLowerCase()}.`,
+                        'Generate aspect-specific crops using platform ratio guidance.',
+                        'Blend brand palette (deep indigo, violet, moonlit sand) with accent gradients.',
+                        'Add overlay layer templates for CTAs and captions per platform.',
+                        'Package exports with accessibility alt-text from planner output.'
+                    ]
+                },
+                {
+                    title: 'Video Automation Stack',
+                    description: 'Leverage Runway, Descript, or Sora to craft reels, shorts, and long-form sequences from a single script.',
+                    steps: [
+                        `Structure script: Hook → context → insight → invitation. Base theme "${topic}" achieving ${goal}.`,
+                        'Generate B-roll cues: lunar landscapes, creator moments, product highlights.',
+                        'Auto-caption using brand typography and keep safe areas for each platform ratio.',
+                        'Version outputs: 9:16 vertical reels/shorts, 1:1 square teasers, 16:9 long-form.',
+                        `Embed CTA overlay: "${cta}" with optional geo mention ${geo || 'global audiences'}.`
+                    ]
+                }
+            ];
+        }
+
+        function renderAutomation(automation) {
+            automationGrid.innerHTML = '';
+            automation.forEach(stream => {
+                const card = document.createElement('article');
+                card.className = 'automation-card';
+                const steps = stream.steps.map(step => `<li>${step}</li>`).join('');
+                card.innerHTML = `
+                    <h3>${stream.title}</h3>
+                    <p>${stream.description}</p>
+                    <ul>${steps}</ul>
+                `;
+                automationGrid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
